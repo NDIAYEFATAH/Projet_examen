@@ -15,22 +15,176 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            <div class="hero_area">
+                @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                <section class=" slider_section position-relative">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="container">
+                                    <div class="box">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="detail-box">
+                                                    <div>
+                                                        <h1>
+                                                            Digital Currency
+                                                        </h1>
+                                                        <h2>
+                                                            The Future of Trading.
+                                                        </h2>
+                                                        <div class="">
+                                                            <a href="">
+                                                                Get Started
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="img-box">
+                                                    <img src="../assets/images/slider-img.png" alt=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="box">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="detail-box">
+                                                    <div>
+                                                        <h1>
+                                                            Digital Currency
+                                                        </h1>
+                                                        <h2>
+                                                            The Future of Trading.
+                                                        </h2>
+                                                        <div class="">
+                                                            <a href="">
+                                                                Get Started
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="img-box">
+                                                    <img src="../assets/images/slider-img.png" alt=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="box">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="detail-box">
+                                                    <div>
+                                                        <h1>
+                                                            Digital Currency
+                                                        </h1>
+                                                        <h2>
+                                                            The Future of Trading.
+                                                        </h2>
+                                                        <div class="">
+                                                            <a href="">
+                                                                Get Started
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="img-box">
+                                                    <img src="../assets/images/slider-img.png" alt=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="box">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="detail-box">
+                                                    <div>
+                                                        <h1>
+                                                            Digital Currency
+                                                        </h1>
+                                                        <h2>
+                                                            The Future of Trading.
+                                                        </h2>
+                                                        <div class="">
+                                                            <a href="">
+                                                                Get Started
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="img-box">
+                                                    <img src="../assets/images/slider-img.png" alt=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="box">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="detail-box">
+                                                    <div>
+                                                        <h1>
+                                                            Digital Currency
+                                                        </h1>
+                                                        <h2>
+                                                            The Future of Trading.
+                                                        </h2>
+                                                        <div class="">
+                                                            <a href="">
+                                                                Get Started
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="img-box">
+                                                    <img src="../assets/images/slider-img.png" alt=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </header>
-            @endif
+                </section>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+            </div>
+
+            @include('layout.partials.footer')
+
     </body>
 </html>

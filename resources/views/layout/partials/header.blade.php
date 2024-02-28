@@ -26,7 +26,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-                    <ul class="navbar-nav  ">
+                    <ul class="navbar-nav">
                         <li class="nav-item ">
                             <a class="nav-link" href="about.html"> About </a>
                         </li>
