@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
+    Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
 });
 
 require __DIR__.'/auth.php';
