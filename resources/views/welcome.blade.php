@@ -49,8 +49,8 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                                <a href="">
-                                                    Get Started
+                                                <a href="{{ route('createCompte') }}">
+                                                    Creer Compte
                                                 </a>
                                             </div>
                                         </div>
@@ -79,8 +79,8 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                                <a href="">
-                                                    Get Started
+                                                <a href="{{ route('createCompte') }}">
+                                                    Creer Compte
                                                 </a>
                                             </div>
                                         </div>
@@ -109,8 +109,8 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                                <a href="">
-                                                    Get Started
+                                                <a href="{{ route('createCompte') }}">
+                                                    Creer Compte
                                                 </a>
                                             </div>
                                         </div>
@@ -191,6 +191,8 @@
     <!-- end slider section -->
 
 
+
+
 </div>
 
 @include('layout.partials.footer')
@@ -217,6 +219,8 @@
             }
         }
     });
+
+
 </script>
 </body>
 </html>

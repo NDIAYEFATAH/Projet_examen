@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Session;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         $user = $request->user();
-        if ($user->userType == '1')
+        if ($user->userType == 1)
         {
             return redirect()->intended(RouteServiceProvider::ADMIN);
         }
@@ -55,5 +56,14 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+    public function logout_admin(Request $request): RedirectResponse
+    {
+        Session::flush();
+        Auth::logout();
+//        $request->session()->invalidate();
+//
+//        $request->session()->regenerateToken();
+        return redirect('welcome');
     }
 }

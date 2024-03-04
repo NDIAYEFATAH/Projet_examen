@@ -22,6 +22,11 @@ class User extends Authenticatable
         'email',
         'password',
         'userType',
+        'prenom',
+        'numero_cni',
+        'cni_file',
+        'telephone',
+        'adresse',
     ];
 
     /**

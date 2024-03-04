@@ -10,13 +10,12 @@
 <link href="../assets/css/style.css" rel="stylesheet"/>
 <!-- responsive style -->
 <link href="../assets/css/responsive.css" rel="stylesheet"/>
-
 <header class="header_section">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
             <span>
-              T-BANK
+              Cryptop
             </span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -26,9 +25,12 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav  ">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('showCompte') }}">Mes Comptes </a>
+                            <a class="nav-link" href="about.html"> About </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="how.html"> How </a>
@@ -38,35 +40,12 @@
                                 <span>Wallet</span> <img src="images/wallet.png" alt="" />
                             </a>
                         </li>
-                            @if (Route::has('login'))
-                                    @auth
-                                        <li class="nav-item">
-                                        <a href="{{ url('/home') }}" class="nav-link">Home</a>
-                                        </li>
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
-                                    </a>
-                                </li>
-
-                                        <li class="nav-item">
-                                            <a href="{{ route('logout_admin') }}" class="nav-link">
-                                                Logout
-                                            </a>
-                                        </li>
-
-                                    @else
-                                        <li class="nav-item">
-                                        <a href="{{ route('login') }}" class="nav-link">Log in</a>
-                                        </li>
-                                        @if (Route::has('register'))
-                                            <li class="nav-item">
-                                            <a href="{{ route('register') }}" class="nav-link">Register</a>
-                                            </li>
-                                    @endif
-                                    @endauth
-                            @endif
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> Sign Up</a>
+                        </li>
                     </ul>
                     <div class="user_option">
                         <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">

@@ -75,6 +75,7 @@ body {
 
 .header_section {
     background-color: #151618;
+    /*background-color: #007bff;*/
 }
 
 .header_section .container-fluid {
@@ -830,6 +831,7 @@ section.app_section .img-box img {
 .footer_section a {
     color: #636363;
 }
+
 
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */

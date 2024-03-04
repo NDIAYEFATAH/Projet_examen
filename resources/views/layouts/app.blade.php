@@ -43,7 +43,7 @@
                                                         </h2>
                                                         <div class="">
                                                             <a href="">
-                                                                Get Started
+                                                                Creer Compte
                                                             </a>
                                                         </div>
                                                     </div>
