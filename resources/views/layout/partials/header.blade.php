@@ -10,7 +10,10 @@
 <link href="../assets/css/style.css" rel="stylesheet"/>
 <!-- responsive style -->
 <link href="../assets/css/responsive.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
 
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
 <header class="header_section">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -27,12 +30,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                     <ul class="navbar-nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('showCompte') }}">Mes Comptes </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="how.html"> How </a>
-                        </li>
+
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span>Wallet</span> <img src="images/wallet.png" alt="" />
@@ -40,12 +39,18 @@
                         </li>
                             @if (Route::has('login'))
                                     @auth
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#modalForm"> Transfert </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('showCompte') }}">Mes Comptes </a>
+                                </li>
                                         <li class="nav-item">
                                         <a href="{{ url('/home') }}" class="nav-link">Home</a>
                                         </li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->prenom }}
                                     </a>
                                 </li>
 
@@ -70,11 +75,75 @@
                     </ul>
                     <div class="user_option">
                         <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit"></button>
                         </form>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Transfert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('saveTransaction') }}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label class="form-label">Nom Beneficiaire</label>
+                            <input type="text" class="form-control" id="username" name="name" placeholder="Nom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Prenom Beneficiaire</label>
+                            <input type="text" class="form-control" id="password" name="prenom" placeholder="Prenom" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">N° Compte</label>
+                            <input type="text" class="form-control" id="password" name="rib" placeholder="N° Compte" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Montant</label>
+                            <input type="number" class="form-control" id="password" name="montant" placeholder="Montant" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Motif du transfert</label>
+                            <input type="text" class="form-control" id="password" name="motif" placeholder="Motif" />
+                        </div>
+                        <div class="modal-footer d-block">
+                            <button type="submit" class="btn btn-warning float-end">Valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </header>
+<script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('#yourFormId').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/saveTransaction',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                // Si la requête réussit, afficher un message de succès et fermer le modal
+                alert(response.success); // Affichez le message de succès
+                $('#modalForm').modal('hide'); // Fermer le modal
+            },
+            error: function(xhr, status, error) {
+                // Si la requête échoue, afficher l'erreur
+                var errorMessage = JSON.parse(xhr.responseText).error;
+                alert(errorMessage); // Affichez le message d'erreur
+            }
+        });
+    });
+</script>
+
+

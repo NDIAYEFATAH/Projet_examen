@@ -30,11 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         $user = $request->user();
-        if ($user->userType == 1)
+        if ($user->userType == "1")
         {
             return redirect()->intended(RouteServiceProvider::ADMIN);
         }
-        else if ($user->userType == '2'){
+        else if ($user->userType == "2"){
             return redirect()->intended(RouteServiceProvider::GUICHET);
         }
         else

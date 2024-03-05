@@ -13,6 +13,10 @@ class CompteController extends Controller
 {
     public function createCompte()
     {
+        if (!Auth::check())
+        {
+            return view('auth.login');
+        }
         $compte = new Compte();
         return view('client.createCompte',['compte' => $compte,
             'table_pack' => Table_pack::all()]);

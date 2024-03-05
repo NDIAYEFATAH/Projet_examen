@@ -21,12 +21,17 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 })->middleware(['auth', 'verified'])->name('welcome');
+
+
 Route::get('/admin', function () {
     return view('/admin');
-})->middleware(['auth', 'verified'])->name('admin');
+})->middleware('admin')->name('admin');
+
+
 Route::get('/guichet', function () {
     return view('guichet');
 })->middleware(['auth', 'verified'])->name('guichet');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,6 +42,8 @@ Route::group(['middleware' => 'client'], function (){
     Route::get('/client/createCompte', [\App\Http\Controllers\CompteController::class,'createCompte'])->name('createCompte');
     Route::post('/client/saveCompte', [\App\Http\Controllers\CompteController::class,'saveCompte'])->name('saveCompte');
     Route::get('/client/showCompte',[\App\Http\Controllers\CompteController::class,'showCompte'])->name('showCompte');
+    //Route::get('/client/s')
+    Route::post('/saveTransaction',[\App\Http\Controllers\TransactionController::class,'saveTransaction'])->name('saveTransaction');
 });
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');

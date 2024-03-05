@@ -18,7 +18,7 @@ class ClientMiddleware
     {
         if (!empty(Auth::check()))
         {
-            if (Auth::user()->userType == '0')
+            if (Auth::user()->userType == "0")
             {
                 return $next($request);
             }
