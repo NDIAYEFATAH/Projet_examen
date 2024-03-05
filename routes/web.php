@@ -25,7 +25,7 @@ Route::get('/welcome', function () {
 
 Route::get('/admin', function () {
     return view('/admin');
-})->middleware(['auth', 'verified'])->name('admin');
+})->middleware(['admin', 'verified'])->name('admin');
 
 
 Route::get('/guichet', function () {
