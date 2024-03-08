@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/welcome', function () {
     return view('welcome');
-})->middleware(['auth', 'verified'])->name('welcome');
+})->middleware(['client', 'verified'])->name('welcome');
 
 
 Route::get('/admin', function () {
@@ -49,6 +49,8 @@ Route::group(['middleware' => 'client'], function (){
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
     Route::post('/admin/saveguichet',[\App\Http\Controllers\GuichetierController::class,'saveguichet'])->name('saveguichet');
+    Route::get('/admin/addPack',[\App\Http\Controllers\PackController::class,'createPack'])->name('addPack');
+    Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');
     Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
 });
 Route::get('logout_admin',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'logout_admin'])->name('logout_admin');

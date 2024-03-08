@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Table_pack extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nom_pack',
+        'azio',
+        'plafond',
+    ];
 }

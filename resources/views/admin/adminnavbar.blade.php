@@ -35,7 +35,7 @@
             </div>
             <a href="{{ route('addguichetier') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Gestion Guichet</a>
             <a href="{{ route('listeCompte') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Les Comptes</a>
-            <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+            <a href="{{ route('addPack') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Packs</a>
             <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
