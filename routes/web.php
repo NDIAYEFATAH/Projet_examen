@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/welcome', function () {
     return view('welcome');
-})->middleware(['auth', 'verified'])->name('welcome');
+})->middleware(['client', 'verified'])->name('welcome');
 
 
 Route::get('/admin', function () {
