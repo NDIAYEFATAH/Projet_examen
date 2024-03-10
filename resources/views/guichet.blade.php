@@ -1,9 +1,21 @@
-@include('layouts.navigation')
-    
+@include('Guichetier.navGuichet')
+<style>
+    /* Adjustments for centering */
+    .centered {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust as needed */
+    }
+    .card {
+        width: 30rem; /* Adjust as needed */
+    }
+</style>
 
-    <div class="card">
+<div class="container centered">
+    <div class="card ml-5 mr-5">
         <div class="card-header">
-            <h2 class="mb-0 center">Dépôt Client </h2>
+            <h2 class="mb-0 center">Dépôt Client</h2>
         </div>
         <div class="card-body">
             <form>
@@ -22,7 +34,7 @@
                 <button type="submit" class="btn btn-success">Effectuer le Dépôt</button>
             </form>
         </div>
-       
     </div>
+</div>
 
 @include('layouts.footer')

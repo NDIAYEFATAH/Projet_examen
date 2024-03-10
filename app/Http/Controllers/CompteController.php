@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CompteMail;
 use App\Models\Compte;
 use App\Models\Table_pack;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+//use Mail;
 
 class CompteController extends Controller
 {
@@ -36,7 +39,19 @@ class CompteController extends Controller
             'statut' => true,
             'user_id' => Auth::user()->id,
         ]);
+        // Masquer les quatre derniers chiffres du RIB
+        $rib = substr_replace($compte->rib, '****', -4);
+        $subject = 'Confirmation de création de compte';
+        $body = "Bonjour,\n\n";
+        $body .= "Nous sommes heureux de vous informer que votre compte a été créé avec succès.\n\n";
+        $body .= "Voici les informations de votre compte :\n";
+        $body .= "Type de compte : " . $compte->type_compte . "\n";
+        $body .= "Numéro de compte (RIB) : " . $rib . "\n";
+        $body .= "Solde initial : " . $compte->solde . " FCFA\n\n";
+        $body .= "Merci de votre confiance.\n\n";
+        $body .= "Cordialement,\nVotre équipe bancaire";
 
+        Mail::to(Auth::user()->email)->send(new CompteMail($subject,$body));
 
         //dd($compte);
         return view('welcome');

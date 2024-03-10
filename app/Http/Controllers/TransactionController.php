@@ -28,24 +28,38 @@ class TransactionController extends Controller
             $emetteur = auth()->user();
             $compteEmetteur = $emetteur->compte;
 
+            // Récupérer la somme des transactions de l'utilisateur dans le mois en cours
+            $transactionsTotal = $emetteur->transactions()->whereMonth('created_at', now()->month)->sum('montant');
+            // Déterminer la limite de transaction en fonction du type de pack
+            $pack = $emetteur->pack;
+            $limit = ($pack == 'Standard') ? 1000000 : 5000000;
+
+
             if ($compteEmetteur->solde > $request->input('montant') || $compteEmetteur->type_compte === 'courant')
             {
                 $compteBeneficiaire = $beneficiaire->compte()->where('rib', $request->input('rib'))->first();
                 if($compteBeneficiaire->type_compte !== 'epargne')
                 {
-                    $compteBeneficiaire->solde += $request->input('montant');
-                    $compteBeneficiaire->save();
-                    $compteEmetteur->solde -= $request->input('montant');
-                    $compteEmetteur->save();
+                    if ($transactionsTotal != 0 && $request->montant < $limit)
+                    {
+                        $compteBeneficiaire->solde += $request->input('montant');
+                        $compteBeneficiaire->save();
+                        $compteEmetteur->solde -= $request->input('montant');
+                        $compteEmetteur->save();
 
-                    Transaction::create([
-                        'user_id_emetteur' => $emetteur->id,
-                        'user_id_beneficiaire' => $beneficiaire->id,
-                        'motif' => $request->motif,
-                        'montant' => $request->montant,
-                    ]);
-                    // Retourner une réponse JSON indiquant le succès du transfert
-                    return response()->json(['success' => 'Transfert réussi.']);
+                        Transaction::create([
+                            'user_id_emetteur' => $emetteur->id,
+                            'user_id_beneficiaire' => $beneficiaire->id,
+                            'motif' => $request->motif,
+                            'montant' => $request->montant,
+                        ]);
+                        // Retourner une réponse JSON indiquant le succès du transfert
+                        return response()->json(['success' => 'Transfert réussi.']);
+                    }
+                    else
+                    {
+                        return response()->json(['error' => 'Vous avez dépassé la limite autorisée de transactions pour ce mois.'], 400);
+                    }
                 }
             }
             else
