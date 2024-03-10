@@ -45,7 +45,7 @@ Route::group(['middleware' => 'client'], function (){
     Route::get('/client/showCompte',[\App\Http\Controllers\CompteController::class,'showCompte'])->name('showCompte');
     //Route::get('/client/s')
     Route::post('/saveTransaction',[\App\Http\Controllers\TransactionController::class,'saveTransaction'])->name('saveTransaction');
-});
+    });
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
     Route::post('/admin/saveguichet',[\App\Http\Controllers\GuichetierController::class,'saveguichet'])->name('saveguichet');
