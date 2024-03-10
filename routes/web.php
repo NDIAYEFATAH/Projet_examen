@@ -50,6 +50,8 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
     Route::post('/admin/saveguichet',[\App\Http\Controllers\GuichetierController::class,'saveguichet'])->name('saveguichet');
     Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
+    Route::post('/admin/bloquer/{object}',[\App\Http\Controllers\CompteAController::class,'bloquer'])->name('bloquer');
+    Route::post('/admin/debloquer/{object}',[\App\Http\Controllers\CompteAController::class,'debloquer'])->name('debloquer');
 });
 Route::get('logout_admin',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'logout_admin'])->name('logout_admin');
 
