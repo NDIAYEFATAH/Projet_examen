@@ -53,6 +53,7 @@ Route::group(['middleware' => 'admin'], function (){
     Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');
     Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
 });
+Route::post('/saveDepot',[\App\Http\Controllers\TransactionController::class,'saveDepot'])->name('saveDepot');
 Route::get('logout_admin',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'logout_admin'])->name('logout_admin');
 
 require __DIR__.'/auth.php';
