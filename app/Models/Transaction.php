@@ -15,4 +15,9 @@ class Transaction extends Model
         'motif',
         'montant',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

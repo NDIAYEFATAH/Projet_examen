@@ -52,4 +52,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Compte::class);
     }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class,'user_id_emetteur');
+    }
 }
