@@ -4,10 +4,28 @@ namespace App\Http;
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\ClientMiddleware;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    protected $commands = [
+        \App\Console\Commands\PayerFraisMensuels::class,
+        // Autres commandes personnalisées peuvent être ajoutées ici
+    ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        // Définissez ici la planification de vos tâches CRON
+        $schedule->command('frais:payer')->monthly(); // Exécuter la commande mensuellement
+    }
+
+    protected function commands()
+    {
+        $this->load(__DIR__.'/Commands');
+
+        require base_path('routes/console.php');
+    }
     /**
      * The application's global HTTP middleware stack.
      *

@@ -1,5 +1,6 @@
 @extends('admin')
 @section('guichet')
+    <br>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -20,12 +21,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($comptes as $compte)
+                                @foreach($transactions as $t)
                                     <tr>
-                                        <td>{{ $compte->id }}</td>
-                                        <td>{{ $compte->type_compte }}</td>
-                                        <td>{{ $compte->rib }}</td>
-                                        <td>{{ $compte->solde }}</td>
+                                        <td>{{ $t->id }}</td>
+                                        <td>{{ $t->emetteur->prenom }} {{ $t->emetteur->name  }}</td>
+                                        <td>{{ $t->beneficiaire->prenom }} {{ $t->beneficiaire->name }}</td>
+                                        <td>{{ $t->montant }}</td>
+                                        <td>{{ $t->motif }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

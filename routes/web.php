@@ -60,6 +60,7 @@ Route::group(['middleware' => 'admin'], function (){
     Route::post('/admin/bloquer/{object}',[\App\Http\Controllers\CompteAController::class,'bloquer'])->name('bloquer');
     Route::post('/admin/debloquer/{object}',[\App\Http\Controllers\CompteAController::class,'debloquer'])->name('debloquer');
     Route::get('/admin/dashadmin',[\App\Http\Controllers\TransactionController::class,'bilanTransaction'])->name('dashadmin');
+    Route::get('/admin/listetransactionsAd',[\App\Http\Controllers\TransactionController::class,'transactionAdmin'])->name('listetransactionsAd');
 });
 Route::post('/saveDepot',[\App\Http\Controllers\TransactionController::class,'saveDepot'])->name('saveDepot');
 Route::get('logout_admin',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'logout_admin'])->name('logout_admin');

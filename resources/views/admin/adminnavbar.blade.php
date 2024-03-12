@@ -24,12 +24,12 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dash</a>
+            <a href="{{ route('listetransactionsAd') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dash</a>
             <a href="{{ route('dashadmin') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Transactions</a>
             <a href="{{ route('addguichetier') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Gestion Guichet</a>
             <a href="{{ route('listeCompte') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Les Comptes</a>
             <a href="{{ route('addPack') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Packs</a>
-            <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+            <a href="{{ route('listetransactionsAd') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Liste transactions</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                 <div class="dropdown-menu bg-transparent border-0">
