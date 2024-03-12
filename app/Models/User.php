@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->comptes()->where('type_compte', 'epargne')->exists();
     }
+    public function compteCourant()
+    {
+        return $this->hasOne(Compte::class)->where('type_compte', 'courant');
+    }
+    
 }

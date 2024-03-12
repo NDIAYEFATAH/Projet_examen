@@ -45,8 +45,12 @@ Route::group(['middleware' => 'client'], function (){
     Route::get('/client/showCompte',[\App\Http\Controllers\CompteController::class,'showCompte'])->name('showCompte');
     //Route::get('/client/s')
     Route::post('/saveTransaction',[\App\Http\Controllers\TransactionController::class,'saveTransaction'])->name('saveTransaction');
-    Route::get('/client/showCarte',[\App\Http\Controllers\CarteController::class,'showCarte'])->name('showCarte');
-    });
+    Route::get('/client/showCarte',[\App\Http\Controllers\CarteController::class,'listerCartes'])->name('showCarte');
+    Route::get('/client/addCarte', [\App\Http\Controllers\CarteController::class, 'addCarte'])->name('addCarte');
+    Route::post('/client/saveCarte', [\App\Http\Controllers\CarteController::class, 'saveCarte'])->name('saveCarte');
+    Route::get('/client/carte/{id}',  [\App\Http\Controllers\CarteController::class, 'show'])->name('show');
+
+});
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
     Route::post('/admin/saveguichet',[\App\Http\Controllers\GuichetierController::class,'saveguichet'])->name('saveguichet');

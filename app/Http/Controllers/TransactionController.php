@@ -40,7 +40,7 @@ class TransactionController extends Controller
                 $compteBeneficiaire = $beneficiaire->compte()->where('rib', $request->input('rib'))->first();
                 if($compteBeneficiaire->type_compte !== 'epargne')
                 {
-                    if ($transactionsTotal != 0 && $request->montant < $limit)
+                    if ($transactionsTotal + $request->montant <= $limit && $request->montant < $limit)
                     {
                         $compteBeneficiaire->solde += $request->input('montant');
                         $compteBeneficiaire->save();
