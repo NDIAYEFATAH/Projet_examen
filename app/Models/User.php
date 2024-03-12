@@ -56,4 +56,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class,'user_id_emetteur');
     }
+    public function comptes()
+    {
+        return $this->hasMany(Compte::class);
+    }
+
+    public function hasCompteCourant()
+    {
+        return $this->comptes()->where('type_compte', 'courant')->exists();
+    }
+
+    public function hasCompteEpargne()
+    {
+        return $this->comptes()->where('type_compte', 'epargne')->exists();
+    }
 }
