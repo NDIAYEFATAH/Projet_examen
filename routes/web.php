@@ -53,8 +53,6 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addPack',[\App\Http\Controllers\PackController::class,'createPack'])->name('addPack');
     Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');
     Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
-    Route::get('/admin/addPack',[\App\Http\Controllers\PackController::class,'createPack'])->name('addPack');
-    Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');
     Route::post('/admin/bloquer/{object}',[\App\Http\Controllers\CompteAController::class,'bloquer'])->name('bloquer');
     Route::post('/admin/debloquer/{object}',[\App\Http\Controllers\CompteAController::class,'debloquer'])->name('debloquer');
     Route::get('/admin/dashadmin',[\App\Http\Controllers\TransactionController::class,'bilanTransaction'])->name('dashadmin');
