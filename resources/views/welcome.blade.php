@@ -49,9 +49,11 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                            @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
-            <a href="{{ route('createCompte') }}">Créer Compte</a>
-        @endif
+                                                @if(auth()->check())
+                                                    @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
+                                                        <a href="{{ route('createCompte') }}">Créer Compte</a>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -79,9 +81,11 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                            @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
-            <a href="{{ route('createCompte') }}">Créer Compte</a>
-        @endif
+                                                @if(auth()->check())
+                                                    @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
+                                                        <a href="{{ route('createCompte') }}">Créer Compte</a>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -109,9 +113,11 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                            @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
-            <a href="{{ route('createCompte') }}">Créer Compte</a>
-        @endif
+                                                @if(auth()->check())
+                                                    @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
+                                                        <a href="{{ route('createCompte') }}">Créer Compte</a>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -139,9 +145,11 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                            @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
-            <a href="{{ route('createCompte') }}">Créer Compte</a>
-        @endif
+                                                @if(auth()->check())
+                                                    @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
+                                                        <a href="{{ route('createCompte') }}">Créer Compte</a>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -169,9 +177,11 @@
                                                 The Future of Trading.
                                             </h2>
                                             <div class="">
-                                            @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
-            <a href="{{ route('createCompte') }}">Créer Compte</a>
-        @endif
+                                                @if(auth()->check())
+                                                    @if(!auth()->user()->hasCompteCourant() || !auth()->user()->hasCompteEpargne())
+                                                        <a href="{{ route('createCompte') }}">Créer Compte</a>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

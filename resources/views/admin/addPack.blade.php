@@ -22,7 +22,7 @@
                 <x-text-input id="plafond" class="block mt-1 w-full" type="number" name="plafond" :value="old('plafond')" required autofocus autocomplete="plafond" />
                 <x-input-error :messages="$errors->get('plafond')" class="mt-2" />
             </div>
-            
+
             <div class="flex items-center justify-end mt-4">
                 <x-primary-button class="ms-4">
                     {{ __('Ajouter') }}

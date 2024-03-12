@@ -77,4 +77,6 @@ class CompteController extends Controller
 
         return view('client.showCompte',['compte' => $compte]);
     }
+
+
 }

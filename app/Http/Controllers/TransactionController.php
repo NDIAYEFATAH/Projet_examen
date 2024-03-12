@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CompteMail;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TransactionController extends Controller
 {
@@ -40,7 +43,7 @@ class TransactionController extends Controller
                 $compteBeneficiaire = $beneficiaire->compte()->where('rib', $request->input('rib'))->first();
                 if($compteBeneficiaire->type_compte !== 'epargne')
                 {
-                    if ($transactionsTotal != 0 && $request->montant < $limit)
+                    if ($transactionsTotal + $request->montant <= $limit  && $request->montant < $limit)
                     {
                         $compteBeneficiaire->solde += $request->input('montant');
                         $compteBeneficiaire->save();
@@ -53,6 +56,15 @@ class TransactionController extends Controller
                             'motif' => $request->motif,
                             'montant' => $request->montant,
                         ]);
+                        $compteBeneficiaireEmail = $beneficiaire->email;
+                        $nouveauSolde = $compteBeneficiaire->solde + $request->input('montant');
+                        $subject = "Transfert D'argent";
+                        $body = "Bonjour,\n\n";
+                        $body .= "Vous avez reçu un virement de " . $request->input('montant') . " FCFA\n\n"; // Ajout du champ "De"
+                        $body .= "Nouveau Solde : " . $nouveauSolde . " FCFA\n\n";
+                        $body .= "Merci de votre confiance.\n\n";
+                        $body .= "Cordialement,\nVotre équipe bancaire";
+                        Mail::to($compteBeneficiaireEmail)->send(new CompteMail($subject,$body));
                         // Retourner une réponse JSON indiquant le succès du transfert
                         return response()->json(['success' => 'Transfert réussi.']);
                     }
@@ -149,6 +161,8 @@ class TransactionController extends Controller
     public function transactionAdmin()
     {
 
+        $transactions = Transaction::all();
+        return view('admin.listeTransactionsAd',['transactions' => $transactions]);
     }
 
 }

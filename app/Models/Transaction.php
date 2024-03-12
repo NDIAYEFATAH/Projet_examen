@@ -20,4 +20,12 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function emetteur()
+    {
+        return $this->belongsTo(User::class,'user_id_emetteur');
+    }
+    public function beneficiaire()
+    {
+        return $this->belongsTo(User::class,'user_id_beneficiaire');
+    }
 }
