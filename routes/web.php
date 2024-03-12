@@ -60,4 +60,4 @@ Route::group(['middleware' => 'admin'], function (){
 Route::post('/saveDepot',[\App\Http\Controllers\TransactionController::class,'saveDepot'])->name('saveDepot');
 Route::get('logout_admin',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'logout_admin'])->name('logout_admin');
 
-require _DIR_.'/auth.php';
+require __DIR__.'/auth.php';
