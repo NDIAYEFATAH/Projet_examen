@@ -45,10 +45,12 @@ Route::group(['middleware' => 'client'], function (){
     Route::get('/client/showCompte',[\App\Http\Controllers\CompteController::class,'showCompte'])->name('showCompte');
     //Route::get('/client/s')
     Route::post('/saveTransaction',[\App\Http\Controllers\TransactionController::class,'saveTransaction'])->name('saveTransaction');
-});
+    });
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
     Route::post('/admin/saveguichet',[\App\Http\Controllers\GuichetierController::class,'saveguichet'])->name('saveguichet');
+    Route::get('/admin/addPack',[\App\Http\Controllers\PackController::class,'createPack'])->name('addPack');
+    Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');
     Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
     Route::get('/admin/addPack',[\App\Http\Controllers\PackController::class,'createPack'])->name('addPack');
     Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');

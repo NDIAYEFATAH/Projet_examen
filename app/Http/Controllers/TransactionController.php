@@ -72,6 +72,42 @@ class TransactionController extends Controller
             return response()->json(['error' => 'Le numero de compte est incorrecte.'], 400);
         }
     }
+    public function saveDepot(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'rib' => 'required',
+            'montant' => 'required',
+        ]);
+
+        $beneficiaire = User::whereHas('compte', function ($query) use ($request) {
+            $query->where('rib', $request->input('rib'));
+        })->where('name', $request->input('name'))
+            ->first();
+
+        if ($beneficiaire) {
+            $emetteur = auth()->user();
+            $compteBeneficiaire = $beneficiaire->compte()->where('rib', $request->input('rib'))->first();
+            if($compteBeneficiaire->type_compte !== 'epargne')
+            {
+                $compteBeneficiaire->solde += $request->input('montant');
+                $compteBeneficiaire->save();
+
+                Transaction::create([
+                    'user_id_emetteur' => $emetteur->id,
+                    'user_id_beneficiaire' => $beneficiaire->id,
+                    'motif' =>'depot',
+                    'montant' => $request->montant,
+                ]);
+                // Retourner une réponse JSON indiquant le succès du transfert
+                return response()->json(['success' => 'Depot réussi.']);
+            }
+        }
+        else
+        {
+            return response()->json(['error' => 'Les comptes épargne ne sont pas autorisés à effectuer des transferts.'], 400);
+        }
+    }
 
     public function bilanTransaction()
     {
@@ -109,4 +145,7 @@ class TransactionController extends Controller
 
         return view('votre_vue', compact('labels', 'data'));
     }
-}
+
+
+    }
+
