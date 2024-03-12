@@ -36,9 +36,15 @@
                                     </td>
                                     <td>
                                         @if($compte->statut)
-                                            <a href="#" class="btn btn-sm btn-danger">Bloquer</a>
+                                            <form action="{{ route('bloquer',$compte) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger">Bloquer</button>
+                                            </form>
                                         @else
-                                            <a href="#" class="btn btn-sm btn-success">Débloquer</a>
+                                            <form action="{{ route('debloquer',$compte) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-success">Débloquer</button>
+                                            </form>
                                         @endif
                                     </td>
                                 </tr>
