@@ -43,10 +43,10 @@
                                     <div class="detail-box">
                                         <div>
                                             <h1>
-                                                Digital Currency
+                                                Transactions Numériques
                                             </h1>
                                             <h2>
-                                                The Future of Trading.
+                                                Façonner l'Avenir du Commerce.
                                             </h2>
                                             <div class="">
                                                 <a href="{{ route('createCompte') }}">
@@ -73,10 +73,10 @@
                                     <div class="detail-box">
                                         <div>
                                             <h1>
-                                                Digital Currency
+                                                Transactions Numériques
                                             </h1>
                                             <h2>
-                                                The Future of Trading.
+                                                Façonner l'Avenir du Commerce.
                                             </h2>
                                             <div class="">
                                                 <a href="{{ route('createCompte') }}">
@@ -103,10 +103,10 @@
                                     <div class="detail-box">
                                         <div>
                                             <h1>
-                                                Digital Currency
+                                                Transactions Numériques
                                             </h1>
                                             <h2>
-                                                The Future of Trading.
+                                                Façonner l'Avenir du Commerce.
                                             </h2>
                                             <div class="">
                                                 <a href="{{ route('createCompte') }}">
@@ -133,14 +133,14 @@
                                     <div class="detail-box">
                                         <div>
                                             <h1>
-                                                Digital Currency
+                                                Transactions Numériques
                                             </h1>
                                             <h2>
-                                                The Future of Trading.
+                                                Façonner l'Avenir du Commerce.
                                             </h2>
                                             <div class="">
-                                                <a href="">
-                                                    Get Started
+                                                <a href="{{ route('createCompte') }}">
+                                                    Creer Compte
                                                 </a>
                                             </div>
                                         </div>
@@ -163,14 +163,14 @@
                                     <div class="detail-box">
                                         <div>
                                             <h1>
-                                                Digital Currency
+                                                Transactions Numériques
                                             </h1>
                                             <h2>
-                                                The Future of Trading.
+                                                Façonner l'Avenir du Commerce.
                                             </h2>
                                             <div class="">
-                                                <a href="">
-                                                    Get Started
+                                                <a href="{{ route('createCompte') }}">
+                                                    Creer Compte
                                                 </a>
                                             </div>
                                         </div>

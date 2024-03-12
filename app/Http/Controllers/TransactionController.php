@@ -72,4 +72,41 @@ class TransactionController extends Controller
             return response()->json(['error' => 'Le numero de compte est incorrecte.'], 400);
         }
     }
+
+    public function bilanTransaction()
+    {
+        // Exemple de code pour extraire les données des transactions par jour
+        $transactions = Transaction::all(); // Supposons que Transaction est le modèle pour les transactions
+        $transactionsByDay = $transactions->groupBy(function ($transaction) {
+            return $transaction->created_at->format('Y-m-d'); // Regrouper les transactions par jour
+        });
+
+        // Compter le nombre de transactions par jour
+        $transactionsCountByDay = $transactionsByDay->map(function ($transactions) {
+            return $transactions->count();
+        });
+
+        // Convertir les données en format JSON pour Chart.js
+        $labels = $transactionsCountByDay->keys()->toJson();
+        $data = $transactionsCountByDay->values()->toJson();
+//        dd($transactionsCountByDay);
+//        dd($transactionsByDay);
+        return view('admin.dashadmin',compact('labels', 'data','transactionsCountByDay'));
+    }
+    public function transactionsParUtilisateur()
+    {
+        $users = User::all();
+        $transactionsParUtilisateur = [];
+        foreach ($users as $user) {
+            $nombreTransactions = Transaction::where('user_id_emetteur', $user->id)
+                ->orWhere('user_id_beneficiaire', $user->id)
+                ->count();
+            $transactionsParUtilisateur[$user->name] = $nombreTransactions;
+        }
+
+        $labels = json_encode(array_keys($transactionsParUtilisateur));
+        $data = json_encode(array_values($transactionsParUtilisateur));
+
+        return view('votre_vue', compact('labels', 'data'));
+    }
 }

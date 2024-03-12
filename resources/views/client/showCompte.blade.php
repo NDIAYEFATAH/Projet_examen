@@ -167,33 +167,53 @@
     <!-- slider section -->
     <section class=" slider_section position-relative">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="container" style="display: flex;margin-top: 170px;margin-bottom: 90px">
+            <div class="container" style="display: flex; margin-top: 170px; margin-bottom: 90px">
                 @foreach($compte as $c)
-                    <div class="card" style="margin-right: 20px; margin-bottom: 10px;">
-
-                        <span class="number">
-                  <div class="wave-group" style="padding-top: 30px">
-                      <span style="margin-top: 15px">{{ strtoupper('compte '.$c->type_compte) }}</span><br>
-                    <span class="label-char" style="--index: 0">RIB: {{ $c->rib }}</span><br>
-
-                    <span class="label-char1" style="--index: 1; margin-top: 10px">Solde Actuelle: {{ $c->solde }}</span>
-                    <input required="" type="text" class="input" />
-                    <span class="bar"></span>
-                    <label class="label">
-                      <br />
-                    </label>
-                  </div>
-                </span>
-                        <span class="owner">Thomas.F</span>
+                    <a href="#" data-toggle="modal" data-target="#basicModal" style="text-decoration: none; color: inherit;">
+                        <div class="card" style="margin-right: 20px; margin-bottom: 10px;">
+                <span class="number">
+                    <div class="wave-group" style="padding-top: 30px">
+                        <span style="margin-top: 15px">{{ strtoupper('compte '.$c->type_compte) }}</span><br>
+                        <span class="label-char" style="--index: 0">RIB: {{ $c->rib }}</span><br>
+                        <span class="label-char1" style="--index: 1; margin-top: 10px">Solde Actuelle: {{ $c->solde }}</span>
+                        <input required="" type="text" class="input" />
+                        <span class="bar"></span>
+                        <label class="label">
+                            <br />
+                        </label>
                     </div>
+                </span>
+                            <span class="owner">Thomas.F</span>
+                        </div>
+                    </a>
                 @endforeach
             </div>
+
         </div>
     </section>
     <!-- end slider section -->
 
 
-
+    <!-- basic modal -->
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Modal Body</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 

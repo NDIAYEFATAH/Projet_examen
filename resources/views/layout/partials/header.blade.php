@@ -32,22 +32,21 @@
                     <ul class="navbar-nav">
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span>Wallet</span> <img src="images/wallet.png" alt="" />
-                            </a>
-                        </li>
+
                             @if (Route::has('login'))
                                     @auth
+                                <li class="nav-item">
+                                        <a href="{{ route('showCarte') }}" class="nav-link">Mes Cartes</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"  data-bs-toggle="modal" data-bs-target="#modalForm"> Transfert </a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{ route('showCompte') }}">Mes Comptes </a>
                                 </li>
-                                        <li class="nav-item">
-                                        <a href="{{ url('/home') }}" class="nav-link">Home</a>
-                                        </li>
+{{--                                        <li class="nav-item">--}}
+{{--                                        <a href="{{ url('/home') }}" class="nav-link">Home</a>--}}
+{{--                                        </li>--}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->prenom }}
