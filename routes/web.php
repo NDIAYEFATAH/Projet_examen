@@ -45,6 +45,7 @@ Route::group(['middleware' => 'client'], function (){
     Route::get('/client/showCompte',[\App\Http\Controllers\CompteController::class,'showCompte'])->name('showCompte');
     //Route::get('/client/s')
     Route::post('/saveTransaction',[\App\Http\Controllers\TransactionController::class,'saveTransaction'])->name('saveTransaction');
+    Route::get('/client/showCarte',[\App\Http\Controllers\CarteController::class,'showCarte'])->name('showCarte');
     });
 Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addguichetier',[\App\Http\Controllers\GuichetierController::class,'createGuichet'])->name('addguichetier');
@@ -52,8 +53,11 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('/admin/addPack',[\App\Http\Controllers\PackController::class,'createPack'])->name('addPack');
     Route::post('/admin/savePack',[\App\Http\Controllers\PackController::class,'savePack'])->name('savePack');
     Route::get('/admin/listeCompte',[\App\Http\Controllers\CompteAController::class,'index'])->name('listeCompte');
-    });
+    Route::post('/admin/bloquer/{object}',[\App\Http\Controllers\CompteAController::class,'bloquer'])->name('bloquer');
+    Route::post('/admin/debloquer/{object}',[\App\Http\Controllers\CompteAController::class,'debloquer'])->name('debloquer');
+    Route::get('/admin/dashadmin',[\App\Http\Controllers\TransactionController::class,'bilanTransaction'])->name('dashadmin');
+});
 Route::post('/saveDepot',[\App\Http\Controllers\TransactionController::class,'saveDepot'])->name('saveDepot');
 Route::get('logout_admin',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'logout_admin'])->name('logout_admin');
 
-require __DIR__.'/auth.php';
+require _DIR_.'/auth.php';

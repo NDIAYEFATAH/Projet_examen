@@ -146,6 +146,10 @@ class TransactionController extends Controller
         return view('votre_vue', compact('labels', 'data'));
     }
 
+    public function transactionAdmin()
+    {
 
     }
+
+}
 
